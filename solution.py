@@ -1,11 +1,13 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+from scipy.stats import ks_2samp
+from scipy.stats import cramervonmises_2samp
+from scipy.stats import anderson_ksamp
 
+chat_id = 843200348
 
-chat_id = 123456 # Ваш chat ID, не меняйте название переменной
 
 def solution(x: np.array, y: np.array) -> bool:
-    # Измените код этой функции
-    # Это будет вашим решением
-    # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    alpha = 0.04
+    p_val = anderson_ksamp([x, y]).pvalue
+    return p_val < alpha
